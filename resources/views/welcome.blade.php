@@ -59,7 +59,7 @@
                             <div class="content-wrapper">
                                 <h1 class="wow fadeInUp" data-wow-delay=".2s">Engage. Appreciate.<br> Give Kudos!</h1>
                                 <p class="wow fadeInLeft" data-wow-delay=".4s">Spark joy in your workplace, inspire, and be inspired. This is what we want you to get, this is what "Kudos" gives...</p>
-        
+                                <p>&nbsp;</p>
                                 <div
                                     class="subscribe-form subscribe-form-1 validate wow fadeInUp" data-wow-delay=".7s"
                                     target="_blank" novalidate>
@@ -68,7 +68,7 @@
                                             type="text" name="b_4dbefd9d3a1d6a570020b1e85_e16d098ae8" tabindex="-1"
                                             value=""></div>
 
-                                    <button onclick='window.location.href="{{ route('register') }}"' id="subscribe" class="sub_btn common-btn">Engage now!</button>
+                                    <button onclick='window.location.href="{{ route('login') }}"' id="subscribe" class="sub_btn common-btn">Start giving a round of "Kudos" now!</button>
                                 </div>
                             </div>
                             <!-- content-wrapper end  -->
