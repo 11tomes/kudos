@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Auth;
 
 class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        //Insert process in getting badges
+        $user = Auth::user();
+
+        //Badges sample
+        $badges = [];
         $badges = [
             [
                 "badge" => "helpful",
@@ -30,7 +34,7 @@ class DashboardController extends Controller
         ];
 
         return Inertia::render('Dashboard', [
-            'badges' => $badges,
+            'badges' => $badges,//$user->getBadges(),
         ]);
     }
 }
