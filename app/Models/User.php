@@ -65,7 +65,7 @@ class User extends Authenticatable
         $badges = [];
 
         //Get trust badge (resolved atleast 3 questions)
-        $resolved_count = $this->getResolvedCount();
+        $resolved_count = $this->getResolveCount();
         if($resolved_count >= 3) {
             $badges[] = [
                 "badge" => "trusted",
@@ -83,7 +83,7 @@ class User extends Authenticatable
         }
 
         //Get curious badge (posted atleast 3 questions)
-        $question_count = $this->getQuestionCount()
+        $question_count = $this->getQuestionCount();
         if($question_count >= 3) {
             $badges[] = [
                 "badge" => "curious",
@@ -95,7 +95,7 @@ class User extends Authenticatable
         if($resolved_count && $question_count && $answer_count) {
             $badges[] = [
                 "badge" => "popular",
-                "label" => "Resolved {$resolved_count}, answered {$answer_count}, and posted {$question_count} questions."
+                "label" => "Congratulations!"
             ];
         }
 
@@ -122,5 +122,22 @@ class User extends Authenticatable
         return DB::table('questions')
             ->where('user_id', $this->id)
             ->count();
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function getGratitudeCount()
+    {
+        return DB::table('gratitudes')
+            ->where('user_id', $this->id)
+            ->pluck('count');
     }
 }

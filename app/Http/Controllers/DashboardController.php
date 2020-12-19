@@ -12,29 +12,9 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
 
-        //Badges sample
-        $badges = [];
-        $badges = [
-            [
-                "badge" => "helpful",
-                "label" => "Answered 1 Question."
-            ],
-            [
-                "badge" => "popular",
-                "label" => "Answered 1 Question."
-            ],
-            [
-                "badge" => "trusted",
-                "label" => "Answered 1 Question."
-            ],
-            [
-                "badge" => "curious",
-                "label" => "Answered 1 Question."
-            ],
-        ];
-
         return Inertia::render('Dashboard', [
-            'badges' => $badges,//$user->getBadges(),
+            'badges' => $user->getBadges(),
+            'gratitude_count' => $user->getGratitudeCount(),
         ]);
     }
 }
