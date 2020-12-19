@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ApplauseController;
 use App\Http\Controllers\TeamController;
 
 /*
@@ -30,5 +31,8 @@ Route::get('questions/{question}', [QuestionController::class, 'show'])->name('q
 Route::post('questions/{question}/comments', [CommentController::class, 'store'])->name('questions.comments.store');
 
 Route::post('comments/{comment}', [CommentController::class, 'resolve'])->name('comments.resolve');
+
+Route::post('applauses/comments/{comment}', [ApplauseController::class, 'applauseComment'])->name('applauses.comments.store');
+Route::post('applauses/questions/{question}', [ApplauseController::class, 'applauseQuestion'])->name('applauses.questions.store');
 
 Route::put('teams/{team}/applause', [TeamController::class, 'resetApplause'])->name('teams.applause.update');
