@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Comment;
 use App\Models\Question;
+use App\Events\ApplauseGiven;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
@@ -71,6 +72,8 @@ class CommentController extends Controller
         $comment->save();
 
         $question = $comment->commentable;
+
+        ApplauseGiven::dispatch($user, $comment->user, 1);
 
         return Redirect::route('questions.show', $question->id);
     }
