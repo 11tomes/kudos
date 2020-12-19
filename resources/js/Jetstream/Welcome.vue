@@ -3,10 +3,10 @@
         <div class="p-3 sm:px-12 bg-teal-100 border-b border-gray-200">
             <div class="mt-4 text-2xl flex items-center justify-between">
                <div class="justify-between items-center">{{introduction}} </div>
-               <div class="justify-between items-center"><img src="assets/img/announcement.png" width="50"/></div>
+               <div class="justify-between items-center"><img src="assets/img/announcement.png" width="60"/></div>
             </div>
 
-            <div class="text-gray-500 -mt-5">
+            <div class="text-gray-500 -mt-6">
                 <splide :options="{autoplay: true}">
                     <splide-slide>
                         <div class="min-w-0 p-5 bg-teal-100">

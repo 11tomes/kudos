@@ -53575,7 +53575,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "text-gray-500 -mt-5" },
+          { staticClass: "text-gray-500 -mt-6" },
           [
             _c(
               "splide",
@@ -53871,7 +53871,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "justify-between items-center" }, [
-      _c("img", { attrs: { src: "assets/img/announcement.png", width: "50" } })
+      _c("img", { attrs: { src: "assets/img/announcement.png", width: "60" } })
     ])
   },
   function() {
