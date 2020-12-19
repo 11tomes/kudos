@@ -1,19 +1,35 @@
 <template>
     <div>
-        <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-            <div>
-                <jet-application-logo class="block h-12 w-auto" />
+        <div class="p-3 sm:px-12 bg-teal-100 border-b border-gray-200">
+            <div class="mt-4 text-2xl flex items-center justify-between">
+               <div class="justify-between items-center">{{introduction}} </div>
+               <div class="justify-between items-center"><img src="assets/img/announcement.png" width="60"/></div>
             </div>
 
-            <div class="mt-8 text-2xl">
-                Welcome to your Jetstream application!
-            </div>
-
-            <div class="mt-6 text-gray-500">
-                Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
-                to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe
-                you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel
-                ecosystem to be a breath of fresh air. We hope you love it.
+            <div class="text-gray-500 -mt-6">
+                <splide :options="{autoplay: true}">
+                    <splide-slide>
+                        <div class="min-w-0 p-5 bg-teal-100">
+                            <h1 class="text-gray-800 dark:text-gray-400 text-2xl">
+                                Do not forget about our Ka(m)pihan Session every Wednesday. It's the day you can earn gratitude points!
+                            </h1>
+                        </div>
+                    </splide-slide>
+                    <splide-slide>
+                        <div class="min-w-0 p-5 bg-teal-100">
+                            <h1 class="text-gray-800 dark:text-gray-400 text-2xl">
+                                Ho! Ho!, Ho! Christmas Party is coming this coming Tuesday! Don't forget to join and have fun!
+                            </h1>
+                        </div>
+                    </splide-slide>
+                    <splide-slide>
+                        <div class="min-w-0  p-5 bg-teal-100">
+                            <h1 class="text-gray-800 dark:text-gray-400 text-2xl">
+                                New Year is coming!
+                            </h1>
+                        </div>
+                    </splide-slide>
+                </splide>
             </div>
         </div>
 
@@ -81,11 +97,46 @@
 
 <script>
     import JetApplicationLogo from '@/Jetstream/ApplicationLogo'
+    import { Splide, SplideSlide } from '@splidejs/vue-splide';
 
     export default {
         components: {
             JetApplicationLogo,
+            Splide,
+            SplideSlide,
         },
+        data() {
+            return {
+                greetings: [
+                    'Hola',
+                    'Hi',
+                    'Hello',
+                    'Hey',
+                    'Dear'
+                ],
+                subGreetings: [
+                    'I hope you are doing fine today.',
+                    'Looking good!',
+                    'How are you doing?'
+                ],
+                announcements: [
+                    "Do not forget about our Ka(m)pihan Session every Wednesday. It's the day you can earn gratitude points!",
+                    "Ho! Ho!, Ho! Christmas Party is coming this coming Tuesday! Don't forget to join and have fun!",
+                    "New Year is coming..."
+                ]
+            }
+        },
+        computed: {
+            introduction() {
+                return this.randomE(this.greetings) + ' ' + this.$page.user.name + '! '
+                    + this.randomE(this.subGreetings)
+            }
+        },
+        methods: {
+            randomE(items) {
+                return items[Math.floor(Math.random() * items.length)];
+            }
+        }
     }
 </script>
 <style scoped>
