@@ -1,9 +1,12 @@
 # This repo is for releasing to http://shipapplause.herokuapp.com
 
 ```
+# one time steps
 $ git clone git@github.com:11tomes/kudos.git
 $ cd kudos
 $ git remote add upstream git@github.com:dxc04/kudos.git
+
+# recurring steps
 $ git fetch upstream
 $ git checkout main
 $ git merge upstream/main
