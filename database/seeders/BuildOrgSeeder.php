@@ -21,22 +21,17 @@ class BuildOrgSeeder extends Seeder
             'name' => 'Owner',
             'email' => 'owner@klajd.com'
         ]);
+        $org = Team::factory()->create(['user_id' => $owner->id]);
 
-        $users = User::factory()->count(10)->create();
+        $users = User::factory()->count(11)->create();
+
         $users->each(function ($user) use ($owner) {
+            Team::factory()->create(['user_id' => $user->id]);
             DB::table('team_user')->insert([
                 'user_id' => $user->id,
-                'team_id' => $owner->team->id
+                'team_id' => $owner->personalTeam()->id
             ]);
         });
 
-/*         $teams = Team::factory->count(2)->create();
-        $users = User::factory->count(30)->create();
-
-        $users->each(function ($user) use ($teams) { 
-            $user->teams()->attach(
-                $teams->random(rand(1, 2))->pluck('id')->toArray()
-            ); 
-        }); */
     }
 }

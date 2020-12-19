@@ -23,9 +23,9 @@ class TeamFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory()->create(),
             'name' => $this->faker->name,
-            'personal_team' => true
+            'personal_team' => true,
+            'user_id' => User::factory()->create()->id
         ];
     }
 }
