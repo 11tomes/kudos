@@ -80,6 +80,11 @@ class TeamPolicy
         return $user->ownsTeam($team);
     }
 
+    public function resetTeamApplause(User $user, Team $team)
+    {
+        return $user->ownsTeam($team);
+    }
+
     /**
      * Determine whether the user can remove team members.
      *
