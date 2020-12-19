@@ -7,11 +7,15 @@ import Vue from 'vue';
 import { InertiaApp } from '@inertiajs/inertia-vue';
 import { InertiaForm } from 'laravel-jetstream';
 import PortalVue from 'portal-vue';
+import VueSplide from '@splidejs/vue-splide';
+
+import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
 
 Vue.mixin({ methods: { route } });
 Vue.use(InertiaApp);
 Vue.use(InertiaForm);
 Vue.use(PortalVue);
+Vue.use( VueSplide );
 
 const app = document.getElementById('app');
 
