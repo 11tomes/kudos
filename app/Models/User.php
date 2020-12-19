@@ -68,4 +68,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function gratitude()
+    {
+        return $this->hasOne(Gratitude::class);
+    }
+
+    public function gratitudeLogs()
+    {
+        return $this->belongsToMany(User::class, 'user_gratitudes', 'user_id', 'recipient_id')
+            ->withTimestamps();
+    }
 }
