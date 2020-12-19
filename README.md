@@ -2,11 +2,12 @@
 
 ```
 # one time steps
-$ git clone git@github.com:11tomes/kudos.git
-$ cd kudos
+$ git clone git@github.com:11tomes/kudos.git kudos-release
+$ cd kudos-release
 $ git remote add upstream git@github.com:dxc04/kudos.git
 
 # recurring steps
+# cd kudos-release
 $ git fetch upstream
 $ git checkout main
 $ git merge upstream/main
