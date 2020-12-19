@@ -136,8 +136,21 @@ class User extends Authenticatable
 
     public function getGratitudeCount()
     {
-        return DB::table('gratitudes')
+        $gratitude = DB::table('gratitudes')
             ->where('user_id', $this->id)
-            ->pluck('count');
+            ->first();
+
+        return $gratitude ? $gratitude->count : 0;
+    }
+
+    public function gratitude()
+    {
+        return $this->hasOne(Gratitude::class);
+    }
+
+    public function gratitudeLogs()
+    {
+        return $this->belongsToMany(User::class, 'user_gratitudes', 'user_id', 'recipient_id')
+            ->withTimestamps();
     }
 }

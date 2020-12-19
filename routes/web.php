@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +29,6 @@ Route::get('questions', [QuestionController::class, 'index'])->name('questions')
 Route::post('questions', [QuestionController::class, 'store'])->name('questions.store');
 Route::get('questions/{question}', [QuestionController::class, 'show'])->name('questions.show');
 Route::post('questions/{question}/comments', [CommentController::class, 'store'])->name('questions.comments.store');
+
 Route::post('comments/{comment}', [CommentController::class, 'resolve'])->name('comments.resolve');
-// Route::resource('questions', QuestionController::class);
+Route::put('teams/{team}/applause', [TeamController::class, 'resetApplause'])->name('teams.applause.update');
