@@ -19,6 +19,12 @@
             <div class="mt-6 text-gray-500">
               {{ question.body }}
             </div>
+
+            <div class="col-12 mt-3">
+                <a v-if="!isQuestionPostedBy($page.user)" class="mt-3 mr-3 text-sm font-semibold text-yellow-500" href="javascript:;" @click.prevent="applauseQuestion(question.id)">
+                    Applause
+                </a>
+            </div>
         </div>
 
         <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-1">
@@ -32,7 +38,7 @@
 
                 <div class="ml-12">
                     <div class="col-12 mt-3">
-                        <a v-if="isQuestionPostedBy($page.user)" class="mt-3 mr-3 text-sm font-semibold text-yellow-500" href="javascript:;" @click.prevent="applause(comment.id)">
+                        <a v-if="!isCommentPostedBy(comment, $page.user)" class="mt-3 mr-3 text-sm font-semibold text-yellow-500" href="javascript:;" @click.prevent="applauseComment(comment.id)">
                             Applause
                         </a>
                         <a v-if="isQuestionPostedBy($page.user)" class="mt-3 text-sm font-semibold text-green-500" href="javascript:;" @click.prevent="markCommentAsCorrect(comment.id)">
@@ -107,6 +113,12 @@ export default {
         }, {
           bag: 'markCommentAsCorrect',
           resetOnSuccess: true
+        }),
+        applauseQuestionForm: this.$inertia.form({
+            count: 1
+        }),
+        applauseCommentForm: this.$inertia.form({
+            count: 1
         })
       }
     },
@@ -119,6 +131,15 @@ export default {
       },
       isQuestionPostedBy(user) {
           return this.question.user.id === user.id;
+      },
+      isCommentPostedBy(comment, user) {
+          return comment.user.id === user.id;
+      },
+      applauseQuestion() {
+          this.applauseQuestionForm.post(route('applauses.questions.store', this.question.id));
+      },
+      applauseComment(comment) {
+          this.applauseCommentForm.post(route('applauses.comments.store', comment.id));
       }
     },
     mounted() {
