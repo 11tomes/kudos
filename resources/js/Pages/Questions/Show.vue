@@ -21,8 +21,8 @@
             </div>
 
             <div class="col-12 mt-3">
-                <a v-if="!isQuestionPostedBy($page.user)" class="mt-3 mr-3 text-sm font-semibold text-yellow-500" href="javascript:;" @click.prevent="applauseQuestion(question.id)">
-                    Applause
+                <a v-if="!isQuestionPostedBy($page.user)" class="mt-3 mr-3 text-sm font-semibold text-yellow-500" href="javascript:;" @click.prevent="applaudQuestion(question.id)">
+                    Applaud
                 </a>
             </div>
         </div>
@@ -38,8 +38,8 @@
 
                 <div class="ml-12">
                     <div class="col-12 mt-3">
-                        <a v-if="!isCommentPostedBy(comment, $page.user)" class="mt-3 mr-3 text-sm font-semibold text-yellow-500" href="javascript:;" @click.prevent="applauseComment(comment.id)">
-                            Applause
+                        <a v-if="!isCommentPostedBy(comment, $page.user)" class="mt-3 mr-3 text-sm font-semibold text-yellow-500" href="javascript:;" @click.prevent="applaudComment(comment)">
+                            Applaud
                         </a>
                         <a v-if="isQuestionPostedBy($page.user)" class="mt-3 text-sm font-semibold text-green-500" href="javascript:;" @click.prevent="markCommentAsCorrect(comment.id)">
                             Mark as Resolved
@@ -114,10 +114,10 @@ export default {
           bag: 'markCommentAsCorrect',
           resetOnSuccess: true
         }),
-        applauseQuestionForm: this.$inertia.form({
+        applaudQuestionForm: this.$inertia.form({
             count: 1
         }),
-        applauseCommentForm: this.$inertia.form({
+        applaudCommentForm: this.$inertia.form({
             count: 1
         })
       }
@@ -135,11 +135,11 @@ export default {
       isCommentPostedBy(comment, user) {
           return comment.user.id === user.id;
       },
-      applauseQuestion() {
-          this.applauseQuestionForm.post(route('applauses.questions.store', this.question.id));
+      applaudQuestion() {
+          this.applaudQuestionForm.post(route('applauses.questions.store', this.question.id));
       },
-      applauseComment(comment) {
-          this.applauseCommentForm.post(route('applauses.comments.store', comment.id));
+      applaudComment(comment) {
+          this.applaudCommentForm.post(route('applauses.comments.store', comment.id));
       }
     },
     mounted() {

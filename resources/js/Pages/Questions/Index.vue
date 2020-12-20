@@ -2,7 +2,7 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Questions
+                The only mistake you can make is not asking for help.
             </h2>
         </template>
 
@@ -19,10 +19,6 @@
                             <div class="mt-4 text-2xl">
                                 Help a team mate
                             </div>
-
-                            <!-- <div class="mt-6 text-gray-500"> -->
-                                <!-- form here -->
-                            <!-- </div> -->
                         </div>
 
                         <div v-for="question in questions" :key="question.id" class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-1">
