@@ -6,6 +6,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ApplauseController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\GratitudeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,7 @@ Route::post('comments/{comment}', [CommentController::class, 'resolve'])->name('
 Route::post('applauses/comments/{comment}', [ApplauseController::class, 'applauseComment'])->name('applauses.comments.store');
 Route::post('applauses/questions/{question}', [ApplauseController::class, 'applauseQuestion'])->name('applauses.questions.store');
 Route::put('teams/{team}/applause', [TeamController::class, 'resetApplause'])->name('teams.applause.update');
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('redeem_gratitude', [GratitudeController::class, 'show'])->name('redeem_gratitude');
+});
