@@ -26,8 +26,14 @@
                 </div>
 
                 <div class="ml-12">
-                    <div class="mt-2 text-sm text-gray-500">
-                        {{ $page.gratitude_count }}
+                    <div class="text-sm text-gray-500 grid grid-cols-12">
+                        <div class="col-start-1 col-end-3">
+                            <img src="assets/img/treasure.svg" class="badges h-20 w-15">
+                        </div>
+                        <div class="col-start-3 col-end-12 gratitude_count">
+                        <p>You now have <strong>{{ $page.gratitude_count }}</strong>.</p>
+                        <p>Keep your questions and comments coming get more!</p>
+                        </div>
                     </div>
 
                 </div>
@@ -40,7 +46,7 @@
                 </div>
 
                 <div class="ml-12">
-                    <div class="ml-2 text-sm text-gray-500 grid grid-cols-2 gap-6">
+                    <div class="ml-2 text-sm text-gray-500 grid grid-cols-2">
                         <div v-for="(value) in $page.badges">
                             <img :src="'assets/img/' + value.badge + '.svg'" alt="" class="badges h-12 w-8">
                             {{ value.label }}
@@ -99,5 +105,8 @@
 <style scoped>
 .badges {
     display: inline;
+}
+.gratitude_count {
+    margin-top: 10px;
 }
 </style>
