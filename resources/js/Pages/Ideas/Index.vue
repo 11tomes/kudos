@@ -23,9 +23,9 @@
                                 </div>
 
                                 <div class="ml-12">
-                                    <a href="javascript:;" @click.prevent="applauseIdea(idea)">
+                                    <a href="javascript:;" @click.prevent="applaudIdea(idea)">
                                         <div class="mt-3 flex items-center text-sm font-semibold text-yellow-400">
-                                              <div>Applause</div>
+                                              <div>Applaud</div>
                                         </div>
                                     </a>
                                 </div>
@@ -55,7 +55,7 @@ import CreateIdeaForm from './CreateIdeaForm.vue'
         },
         data() {
           return{
-            applauseIdeaForm: this.$inertia.form({
+            applaudIdeaForm: this.$inertia.form({
                 count: 1
             }),
             ideaForm: this.$inertia.form({
@@ -70,8 +70,8 @@ import CreateIdeaForm from './CreateIdeaForm.vue'
             console.log(this.ideas);
         },
         methods: {
-          applauseIdea(idea) {
-            this.applauseIdeaForm.post(route('applauses.ideas.store', idea.id));
+          applaudIdea(idea) {
+            this.applaudIdeaForm.post(route('applauses.ideas.store', idea.id));
           }
         }
     }
