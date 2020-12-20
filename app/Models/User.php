@@ -66,38 +66,37 @@ class User extends Authenticatable
 
         //Get trust badge (resolved atleast 3 questions)
         $resolved_count = $this->getResolveCount();
-        if($resolved_count >= 3) {
-            $badges[] = [
-                "badge" => "trusted",
-                "label" => "Resolved {$resolved_count} questions."
-            ];
-        }
+        $badges[] = [
+            "badge" => $resolved_count >= 3 ? "trusted" : "greyed_trusted",
+            "label" => "Resolved {$resolved_count} questions."
+        ];
 
         //Get helpful badge (answered atleast 3 questions)
         $answer_count = $this->getAnswerCount();
-        if($answer_count >= 3) {
-            $badges[] = [
-                "badge" => "helpful",
-                "label" => "Answered {$answer_count} questions."
-            ];
-        }
+        $badges[] = [
+            "badge" => $answer_count >= 3 ? "helpful" : "greyed_helpful",
+            "label" => "Answered {$answer_count} questions."
+        ];
 
         //Get curious badge (posted atleast 3 questions)
         $question_count = $this->getQuestionCount();
-        if($question_count >= 3) {
-            $badges[] = [
-                "badge" => "curious",
-                "label" => "Posted {$question_count} questions."
-            ];
-        }
+        $badges[] = [
+            "badge" => $question_count >= 3 ? "curious" : "greyed_curious",
+            "label" => "Posted {$question_count} questions."
+        ];
 
         //Get popular badge (has ressolved, answered, and posted a question)
+        $popular_badge = "greyed_popular";
+        $popular_label = "Go interact, you're almost there!";
         if($resolved_count && $question_count && $answer_count) {
-            $badges[] = [
-                "badge" => "popular",
-                "label" => "Congratulations!"
-            ];
+            $popular_badge = "popular";
+            $popular_label = "Hurrah! You're famous!!!";
         }
+
+        $badges[] = [
+            "badge" => $popular_badge,
+            "label" => $popular_label
+        ];
 
         return $badges;
     }
