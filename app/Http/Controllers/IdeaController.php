@@ -48,7 +48,7 @@ class IdeaController extends Controller
         Gate::forUser($user)->authorize('create', Question::class);
 
         Validator::make($input, [
-            'body' => ['required', 'string', 'max:255'],
+            'body' => ['required', 'string', 'max:65535'],
         ])->validateWithBag('createQuestion');
 
         $idea = $user->ideas()->create([

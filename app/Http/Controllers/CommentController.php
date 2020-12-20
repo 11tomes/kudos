@@ -51,7 +51,7 @@ class CommentController extends Controller
         Gate::forUser($user)->authorize('create', Comment::class);
 
         Validator::make($input, [
-            'body' => ['required', 'string', 'max:255'],
+            'body' => ['required', 'string', 'max:65535'],
         ])->validateWithBag('createQuestion');
 
         $comment = new Comment([
