@@ -2,30 +2,16 @@
     <div>
         <div class="p-3 sm:px-12 bg-teal-100 border-b border-gray-200">
             <div class="mt-4 text-2xl flex items-center justify-between">
-               <div class="justify-between items-center">{{introduction}} </div>
+               <div class="justify-between items-center">{{introduction}} Here are some news for you...</div>
                <div class="justify-between items-center"><img src="assets/img/announcement.png" width="60"/></div>
             </div>
 
-            <div class="text-gray-500 -mt-6">
-                <splide :options="{autoplay: true}">
-                    <splide-slide>
-                        <div class="min-w-0 p-5 bg-teal-100">
+            <div class="text-gray-500 -mt-8">
+                <splide :options="{autoplay: true, type: 'loop' }">
+                    <splide-slide v-for="(value, index) in announcements" :key="index">
+                        <div class="min-w-0 p-5">
                             <h1 class="text-gray-800 dark:text-gray-400 text-2xl">
-                                Do not forget about our Ka(m)pihan Session every Wednesday. It's the day you can earn gratitude points!
-                            </h1>
-                        </div>
-                    </splide-slide>
-                    <splide-slide>
-                        <div class="min-w-0 p-5 bg-teal-100">
-                            <h1 class="text-gray-800 dark:text-gray-400 text-2xl">
-                                Ho! Ho!, Ho! Christmas Party is coming this coming Tuesday! Don't forget to join and have fun!
-                            </h1>
-                        </div>
-                    </splide-slide>
-                    <splide-slide>
-                        <div class="min-w-0  p-5 bg-teal-100">
-                            <h1 class="text-gray-800 dark:text-gray-400 text-2xl">
-                                New Year is coming!
+                                {{ value }}
                             </h1>
                         </div>
                     </splide-slide>

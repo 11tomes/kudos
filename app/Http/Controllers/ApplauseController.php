@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\Redirect;
 use App\Events\ApplauseGiven;
 use App\Models\Question;
 use App\Models\Comment;
+use App\Models\Idea;
 
 class ApplauseController extends Controller
 {
-    public function applauseComment(Comment $comment)
+    public function applaudComment(Comment $comment)
     {
         $user = Auth::user();
         $recipient = $comment->user;
@@ -19,10 +20,10 @@ class ApplauseController extends Controller
 
         ApplauseGiven::dispatch($user, $recipient, $count);
 
-        return Redirect::route('questions.show', $comment->question);
+        return Redirect::route('questions.show', $comment->commentable->id);
     }
 
-    public function applauseQuestion(Question $question)
+    public function applaudQuestion(Question $question)
     {
         $user = Auth::user();
         $recipient = $question->user;
@@ -30,6 +31,17 @@ class ApplauseController extends Controller
 
         ApplauseGiven::dispatch($user, $recipient, $count);
 
-        return Redirect::route('questions.show', $question);
+        return Redirect::route('questions.show', $question->id);
+    }
+
+    public function applaudIdea(Idea $idea)
+    {
+        $user = Auth::user();
+        $recipient = $idea->user;
+        $count = 1;
+
+        ApplauseGiven::dispatch($user, $recipient, $count);
+
+        return Redirect::route('ideas');
     }
 }

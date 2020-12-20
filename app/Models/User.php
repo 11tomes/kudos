@@ -153,4 +153,9 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'user_gratitudes', 'user_id', 'recipient_id')
             ->withTimestamps();
     }
+
+    public function ideas()
+    {
+        return $this->hasMany(Idea::class);
+    }
 }
