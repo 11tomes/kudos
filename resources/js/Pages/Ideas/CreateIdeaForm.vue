@@ -1,24 +1,19 @@
 <template>
-    <jet-form @submitted="createQuestion">
+    <jet-form @submitted="createIdea">
         <template #form>
             <div class="col-span-12">
-                <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.title" placeholder="Need help? Write it down here." />
-                <jet-input-error :message="form.error('title')" class="mt-2" />
-            </div>
-
-            <div class="col-span-12">
-                <textarea id="body" class="form-input mt-1 block w-full" v-model="form.body" placeholder="Add more details"/>
+                <textarea id="body" class="form-input mt-1 block w-full" v-model="form.body" placeholder="Got one? Write it down."/>
                 <jet-input-error :message="form.error('body')" class="mt-2" />
             </div>
         </template>
 
         <template #actions>
             <jet-action-message :on="form.recentlySuccessful" class="mr-3">
-                Posted.
+                Shared.
             </jet-action-message>
 
             <jet-primary-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Post a Question
+                Share an idea
             </jet-primary-button>
         </template>
     </jet-form>
@@ -47,19 +42,19 @@
         data() {
             return {
                 form: this.$inertia.form({
-                    title: '',
                     body: ''
                 }, {
-                    bag: 'createQuestion',
+                    bag: 'createIdea',
                     resetOnSuccess: true,
                 })
             }
         },
 
         methods: {
-            createQuestion() {
-                this.form.post(route('questions.store'));
+            createIdea() {
+                this.form.post(route('ideas.store'));
             }
         },
     }
 </script>
+

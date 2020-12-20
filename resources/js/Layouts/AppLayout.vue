@@ -20,6 +20,9 @@
                             <jet-nav-link :href="route('questions')" :active="route().current('questions')">
                                 Questions
                             </jet-nav-link>
+                            <jet-nav-link :href="route('ideas')" :active="route().current('ideas')">
+                                Ideas
+                            </jet-nav-link>
                         </div>
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                             <jet-nav-link :href="route('redeem_gratitude')" :active="route().current('redeem_gratitude')">
